@@ -101,12 +101,13 @@ def createParseTable(ter):
     for i in state:
         parseTable[i[1]-1][symbolMap[i[3]]] = i[0]+str(i[2]-1)
 
-    parseTable[accept][symbolMap['$']] = 'a'
+    # parseTable[accept][symbolMap['$']] = 'a'
 
     for i in reduce:
         if(len(i)>0):
             for j in ter:
                 parseTable[reduce.index(i)][symbolMap[j]] = 'r'+str(i[0])
+    print(symbolMap)
 
 
 #  Driver Program
@@ -158,7 +159,7 @@ print("NonTerminals: ", nonTerminals)
 
 # S = input("Start Symbol :  ")
 S = "S" #Termporal
-terminals+=['$']
+# terminals+=['$']
 print("Productions : ")
 for i in nonTerminals.keys():
     print(i,"-->",end=' ')
