@@ -1,0 +1,6 @@
+main() {
+	ceva = '-'
+	altceva = 2
+	write(ceva)
+	read(altceva)
+}
