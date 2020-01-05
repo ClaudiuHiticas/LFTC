@@ -1,0 +1,16 @@
+# IDE
+.idea/
+
+# Python
+.coverage
+*.egg-info/
+.project
+.pydevproject
+*/.pytest_cache/*
+*.pyc
+venv*/
+
+# App
+media/profile_pics/
+logs/
+*.log

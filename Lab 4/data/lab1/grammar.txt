@@ -1,0 +1,18 @@
+SS
+SS program declaration condition relation type stmt assign_stmt if_stmt out_stmt term term_operator expression term term_operator factor factor_operator
+constant identifier float int char = + - * / if ( ) { } == != < <= > >= << cout
+SS->program
+program->declaration stmt
+declaration->type identifier
+type->float|char|int
+stmt->assign_stmt|if_stmt|out_stmt
+assign_stmt->identifier = expression
+expression->term term_operator factor|constant
+term->constant|identifier
+term_operator->+|-
+factor->constant factor_operator constant
+factor_operator->*|/
+if_stmt->if ( condition ) { stmt stmt }
+condition->identifier relation constant|constant relation identifier|constant relation constant
+relation-><|<=|==|>=|>|!=
+out_stmt->cout << identifier
