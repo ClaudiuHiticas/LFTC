@@ -3,8 +3,8 @@ constant 1
 float 2
 int 3
 char 4
-cin 5
-cout 6
+read 5
+print 6
 if 7
 else 8
 while 9

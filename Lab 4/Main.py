@@ -66,7 +66,7 @@ def read_lab1_grammar_from_file(filename, codif_table):
     grammar.terminals = terms_replaced
 
     # replace terminals with their codes in productions
-    # a constant = character, interger or float number, will have code 1
+    # a constant = character or integer number will have code 1
     line = file.readline().strip()
     while line != "":
         production_rule = line.split("->")
@@ -252,8 +252,8 @@ def main():
     In the grammar files, write the productions like this: B-> b C|B C ,meaning that you have to manually separate the symbols by space,
 because it would be harder to know which are the symbols from something like this: prog->declstmt;returnstmt
     """
-    # seminar_example_main()
-    lab1_example_main()
+    seminar_example_main()
+    # lab1_example_main()
 
 
 main()
