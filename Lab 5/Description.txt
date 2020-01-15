@@ -1,0 +1,158 @@
+Language specification:
+1. Language Definition:
+ 1.1 Alphabet:
+ 1.1.a. Upper Letters (A-Z) and lower letters (a-z) of the alphabet
+ b. Character '_';
+ c. Decimal digits (0-9);
+ Lexic:
+ a.Special symbols:
+- operators + - * / := < <= = >=
+- separators [ ] { } : ; space
+- reserved words:
+ b.identifier
+ -array of letters and digits, such that the first character to be a letter; the rule is:
+ identifier ::= letter | letter{letter}{digit}
+ letter ::= "A" | "B" | . ..| "Z"
+ digit ::= "0" | "1" |...| "9"
+ c.constants
+1.integers:
+ number ::= "0"|sign notnulldigit{digit}
+ notnulldigit ::= "1" |...| "9"
+ integer ::= digit{digit}
+2.flotante
+ float ::= number[point numberws]
+3.caracter
+ char:='letter'|'digit'
+ sign ::= "+"|"-"
+ point ::= "."
+4.string
+ constchar:="string"
+ string:=char{string}
+ char:=letter|digit
+2.2 Syntax:
+a) Syntactic rules:
+ program ::= "int main(){" cmpd_stmt "}"
+ type ::= "int" | "float" | "char"
+ cmpd_stmt ::= "{" stmt_list "}"
+ stmt_list ::= stmt_list | stmt
+ stmt ::= decl ";" | assign ";" | return ";" | iostmt ";" | loop | if_stmt | for 
+ decl ::= type identifier | type assign
+ assign ::= ID "=" expr 
+ op ::= "+" | "-" | "*" | "/" | "%"
+ constant ::= integer | real
+ expr ::= identifier | expr op identifier | expr op constant | "(" expr ")"
+ return ::= "return" integer
+ iostmt ::= input | output
+ input ::= "cin>>" identifier
+ output ::= "cout<<" identifier | "cout<<" integer | "cout<<" float | "cout<<" char
+ loop ::= "while(" condition ")" stmt | "while(" condition ")" cmpd_stmt
+ condition ::= expr relation_op expr
+ relation_op ::= "=" | "!=" | "<" | "<=" | ">" | ">="
+ if_stmt ::= "if(" condition ")" cmpd_stmt
+	    |"if(" condition ")" stmt
+            |"if(" condition ")" cmpd_stmt else cmpd_stmt
+	    |"if(" condition ")" cmpd_stmt else stmt
+	    |"if(" condition ")" stmt else cmpd_stmt
+	    |"if(" condition ")" stmt else stmt
+ for ::= "for(" assign ";" condition ";" assign ")" stmt
+	|"for(" assign ";" condition ";" assign ")" cmpd_stmt
+ 
+
+The atoms are codifier in the following way:
+- identifier - cod 0
+- constants - cod 1
+- reserved words: every word has the own code
+- operators: every operator has the own code
+- separators: every separator has the own code
+
+Codification Table:
+-------------------------
+| Atom type | code |
+-------------------------
+| identifier | 0 |
+-------------------------
+| constant char/string | 1 |
+-------------------------
+| constant int  | 2 |
+-------------------------
+| constant float | 3 |
+-------------------------
+| char | 4 |
+-------------------------
+| int | 5 |
+-------------------------
+| float | 6 |
+-------------------------
+| bool | 7 |
+-------------------------
+| string | 8 |
+-------------------------
+| for | 9 |
+-------------------------
+| while | 10 |
+-------------------------
+| if | 11 |
+-------------------------
+| else | 12 |
+-------------------------
+|; | 13 |
+-------------------------
+|, | 14 |
+-------------------------
+| . | 15 |
+-------------------------
+| + | 16 |
+-------------------------
+| - | 17 |
+-------------------------
+| * | 18 |
+-------------------------
+| ( | 19 |
+-------------------------
+| ) | 20 |
+-------------------------
+| ] | 21 |
+-------------------------
+| ] | 22 |
+-------------------------
+| { | 23 |
+-------------------------
+| } | 24 |
+-------------------------
+| < | 25 |
+-------------------------
+| > | 26 |
+-------------------------
+| = | 27 |
+-------------------------
+| ! | 28 |
+-------------------------
+| / | 29 |
+-------------------------
+| cin>> | 30 |
+-------------------------
+| cout<< | 31 |
+-------------------------
+| return | 32 |
+-------------------------
+| main | 33 |
+-------------------------
+
+*****
+
+Source Code:
+ 
+ int main()
+{
+  int n;float sum;int ind;float x;
+  cin>> n;
+  sum = 0;
+  ind = 0;
+  while (ind < n) {
+    cin>>x;
+    sum = sum + x;
+    ind = ind + 1;
+  }
+  cout<< sum;
+  return 0;
+}
